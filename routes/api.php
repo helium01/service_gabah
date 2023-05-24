@@ -2,6 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HujansensorController;
+use App\Http\Controllers\LdrsensorController;
+use App\Http\Controllers\PirSensorController;
+use App\Http\Controllers\ServoController;
+use App\Http\Controllers\SuhusensorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +43,7 @@ Route::delete('ldrs/{sensor}', [LdrsensorController::class, 'destroy']);
 Route::get('servos', [ServoController::class, 'index']);
 Route::post('servos', [ServoController::class, 'store']);
 Route::get('servos/{sensor}', [ServoController::class, 'show']);
-Route::put('servos/{sensor}', [ServoController::class, 'update']);
+Route::get('servos/{sensor}/update', [ServoController::class, 'update']);
 Route::delete('servos/{sensor}', [ServoController::class, 'destroy']);
 
 Route::get('suhus', [SuhusensorController::class, 'index']);

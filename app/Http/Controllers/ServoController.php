@@ -10,11 +10,14 @@ class ServoController extends Controller
     public function index()
     {
         $sensors = servo::all();
-        return response()->json($sensors);
+        return response()->json([
+            'data' => $sensors
+        ]);
     }
     public function index_view()
     {
-        return view('admin.servo.index');
+        $sensors = servo::find(1);
+        return view('admin.servo.index',compact('sensors'));
     }
 
     public function store(Request $request)
@@ -25,13 +28,22 @@ class ServoController extends Controller
 
     public function show(servo $sensor)
     {
+        
         return response()->json($sensor);
     }
 
     public function update(Request $request, servo $sensor)
     {
-        $sensor->update($request->all());
-        return response()->json($sensor);
+        if ($sensor->status == 1) {
+            $sensor->update([
+                'status' => 0
+            ]);
+        } else {
+            $sensor->update([
+                'status' => 1
+            ]);
+        }
+        return redirect('/servo/view');
     }
 
     public function destroy(servo $sensor)
