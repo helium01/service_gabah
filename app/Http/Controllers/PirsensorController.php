@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\pirsensor;
 use Illuminate\Http\Request;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
 class pirsensorController extends Controller
 {
@@ -15,7 +16,7 @@ class pirsensorController extends Controller
             $keadaan = "tidak ada data";
         }
         foreach ($sensor as $dt) {
-            if ($dt->node >= 4) {
+            if ($dt->node < 1) {
                 $keadaan = "terdapat manusia atau hewan";
             } else {
                 $keadaan = "tidak terdapat manusia atau hewan";

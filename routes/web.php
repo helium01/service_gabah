@@ -6,6 +6,7 @@ use App\Http\Controllers\LdrsensorController;
 use App\Http\Controllers\PirsensorController;
 use App\Http\Controllers\ServoController;
 use App\Http\Controllers\SuhusensorController;
+use App\Http\Controllers\botController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,6 @@ Route::get('cahaya/view', [LdrsensorController::class, 'index_view']);
 Route::get('pir/view', [PirsensorController::class, 'index_view']);
 Route::get('servo/view', [ServoController::class, 'index_view']);
 Route::get('suhu/view', [SuhusensorController::class, 'index_view']);
+Route::get('/bot/tele', [botController::class, 'sendMessageToTelegram']);
+Route::post('/telegram/webhook', [botController::class, 'handleRequest']);
+Route::get('/webhook', [botController::class, 'setwebhook']);

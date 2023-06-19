@@ -168,6 +168,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        // Telegram\Bot\Laravel\TelegramServiceProvider::class,
+        // Telegram\Bot\Laravel\TelegramBotServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -180,7 +182,7 @@ return [
     | the aliases are "lazy" loaded so they don't hinder performance.
     |
     */
-
+    // 'Telegram'=>Telegram\Bot\Vacades\Telegram::class,
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
